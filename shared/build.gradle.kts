@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.rickclephas.kmp.nativecoroutines") version "0.11.3"
 }
 
 kotlin {
@@ -17,7 +18,11 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
